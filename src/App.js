@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import LandingPage from './landing-page/landing-page';
 import AdminDashboard from './admin-dashboard/admin-dashboard';
 import NoMatches from './no-matches/no-matches';
+import PageLayout from './page-layout/page-layout'
 
 function App() {
   useEffect(() => {
@@ -16,12 +17,14 @@ function App() {
 
   return (
     <Router>
-      <Switch>
+      <PageLayout >
+        <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route path="/dashboard" component={AdminDashboard} />
           <Route component={NoMatches} />
-      </Switch>
-   </Router>
+        </Switch>
+      </PageLayout>
+    </Router>
   );
 }
 
