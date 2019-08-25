@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import "./App.css";
 import { request } from "./backend-request";
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import LandingPage from './landing-page/landing-page';
-import Dashboard from './dashboard/dashboard';
+import AdminDashboard from './admin-dashboard/admin-dashboard';
+import NoMatches from './no-matches/no-matches';
 
 function App() {
   useEffect(() => {
@@ -14,9 +15,12 @@ function App() {
   });
 
   return (
-   <Router>
-      <Route path="/" component={LandingPage} />
-      <Route path="/dashboard" component={Dashboard} />
+    <Router>
+      <Switch>
+          <Route exact path="/" component={LandingPage} />
+          <Route path="/dashboard" component={AdminDashboard} />
+          <Route component={NoMatches} />
+      </Switch>
    </Router>
   );
 }
