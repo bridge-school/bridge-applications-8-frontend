@@ -1,0 +1,23 @@
+.app-header {
+  background-color: #4E57CA;
+  padding: 1.25em 0;
+}
+
+.app-header-aligner {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.bridge-logo {
+  width: 50px;
+  display: inline-block;
+}
+
+.page-title {
+  color: #fff;
+  display: inline-block;
+  padding: 0 25px;
+  margin: 0;
+}
