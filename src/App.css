@@ -1,3 +1,8 @@
+:root {
+  --purple: #4E57CA;
+  --white: #fff;
+}
+
 body {
   font-size: 62.5%
 }
