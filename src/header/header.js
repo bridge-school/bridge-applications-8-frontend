@@ -6,8 +6,10 @@ const Header = ({title}) => {
   return(
     <header className="app-header">
       <div className="app-header-aligner">
-        <img src={logo} className="bridge-logo" alt="bridge logo"/>
-        <h1 className='page-title'>{title}</h1>
+        <a href="/" className='app-logo'>
+          <img src={logo} alt="bridge logo"/>
+        </a>
+        <h1 className="app-title">{title}</h1>
       </div>
     </header>
   )
