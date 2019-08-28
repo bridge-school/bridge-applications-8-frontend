@@ -1,6 +1,6 @@
 import React from "react";
 import "./header.css";
-import logo from "../images/bridge-logo.svg";
+import logo from "../../images/bridge-logo.svg";
 
 const Header = ({title}) => {
   return(
