@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../images/bridge-logo.svg";
+import logo from "../../images/bridge-logo.svg";
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons'
 
