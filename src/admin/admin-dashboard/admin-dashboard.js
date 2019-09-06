@@ -2,6 +2,7 @@ import React from "react";
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import Button from '../../common/button/button';
+import CohortCard from '../../common/cohort-card/cohort-card';
 
 const AdminDashboard = () => {
   const H1 = styled.h1`
@@ -16,10 +17,27 @@ const AdminDashboard = () => {
     ${tachyons}
   `;
 
+  const HeadWrapper = styled.section`
+    ${tachyons}
+  `;
+
+  const CohortCardWrapper = styled.section`
+    margin-top: 3.5rem;
+    ${tachyons}
+  `;
+
   return(
-    <Wrapper flex justify_between>
-      <H1 di>Cohort Application Forms</H1>
-      <Button color="green" size="large">CREATE APPLICATION GROUP</Button>
+    <Wrapper flex flex_column>
+      <HeadWrapper flex justify_between>
+        <H1 di>Cohort Application Forms</H1>
+        <Button color="green">CREATE APPLICATION GROUP</Button>
+      </HeadWrapper>
+      <CohortCardWrapper>
+          <CohortCard name="Cohort 0" type="frontend development"></CohortCard>
+          <CohortCard name="Cohort 7" type="design"></CohortCard>
+          <CohortCard name="Cohort 2" type="backend development"></CohortCard>
+      </CohortCardWrapper>
+
     </Wrapper>
   )
 }
