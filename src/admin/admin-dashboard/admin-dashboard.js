@@ -1,10 +1,12 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import Button from '../../common/button/button';
 import CohortCard from '../../common/cohort-card/cohort-card';
 
 const AdminDashboard = () => {
+  const { t } = useTranslation();
   const H1 = styled.h1`
     padding: 0;
     margin: 0;
@@ -29,7 +31,7 @@ const AdminDashboard = () => {
   return(
     <Wrapper flex flex_column>
       <HeadWrapper flex justify_between>
-        <H1 di>Cohort Application Forms</H1>
+        <H1 di>{t('cohort-application-form')}</H1>
         <Button color="green">CREATE APPLICATION GROUP</Button>
       </HeadWrapper>
       <CohortCardWrapper>
