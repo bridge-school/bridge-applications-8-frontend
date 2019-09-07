@@ -31,15 +31,14 @@ const AdminDashboard = () => {
   return(
     <Wrapper flex flex_column>
       <HeadWrapper flex justify_between>
-        <H1 di>{t('cohort-application-form')}</H1>
-        <Button color="green">CREATE APPLICATION GROUP</Button>
+        <H1 di>{t('admin.dashboard.cohort-application-form')}</H1>
+        <Button color="green">{t('admin.dashboard.create-application-group')}</Button>
       </HeadWrapper>
       <CohortCardWrapper>
           <CohortCard name="Cohort 0" type="frontend development"></CohortCard>
           <CohortCard name="Cohort 7" type="design"></CohortCard>
           <CohortCard name="Cohort 2" type="backend development"></CohortCard>
       </CohortCardWrapper>
-
     </Wrapper>
   )
 }

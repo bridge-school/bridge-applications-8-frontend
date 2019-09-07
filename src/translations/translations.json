@@ -3,12 +3,18 @@
 {
   "en": {
     "translation": {
-      "cohort-application-form": "Cohort Application Form"
-    }
-  },
-  "fr": {
-    "translation": {
-      "cohort-application-form": "Cohort Application Form - FRENCH"
+      "admin": {
+        "dashboard": {
+          "cohort-application-form": "Cohort Application Form",
+          "create-application-group": "Create Application Group"
+        },
+        "create-cohort": {
+          "create-new-cohort-application-form":" Create New Cohort Application Form"
+        }
+      },
+      "common": {
+        "404-page": "Sorry, this page does not exist"
+      }
     }
   }
 }
