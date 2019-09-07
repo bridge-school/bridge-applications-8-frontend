@@ -32,7 +32,7 @@ const AdminDashboard = () => {
     <Wrapper flex flex_column>
       <HeadWrapper flex justify_between>
         <H1 di>{t('admin.dashboard.cohort-application-form')}</H1>
-        <Button color="green">{t('admin.dashboard.create-application-group')}</Button>
+        <Button color="green" size="large">{t('admin.dashboard.create-application-group')}</Button>
       </HeadWrapper>
       <CohortCardWrapper>
           <CohortCard name="Cohort 0" type="frontend development"></CohortCard>
