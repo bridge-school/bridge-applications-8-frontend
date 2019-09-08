@@ -34,3 +34,8 @@ export const SelectField = styled.select`
     display: none;
   }
 `;
+
+export const Error = styled.div`
+  font-size: 1rem;
+  color: red;
+`;
