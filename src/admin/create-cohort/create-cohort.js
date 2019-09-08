@@ -5,7 +5,7 @@ const CreateCohort = () => {
   return (
     <>
       <h1>Create New Cohort Application Form</h1>
-      <p><CreateForm /></p>
+      <CreateForm />
     </>
   );
 }
