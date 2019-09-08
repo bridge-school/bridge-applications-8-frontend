@@ -18,7 +18,9 @@ const CustomSelect = ({
       <SelectField br2 ba bw1 w_100 name="cohorttype" component="select">
         <option value="">{props.optionsLabel}</option>
         {props.options.map(option => (
-          <option value={removeSpaces(option)}>{option}</option>
+          <option key={removeSpaces(option)} value={removeSpaces(option)}>
+            {option}
+          </option>
         ))}
       </SelectField>
     </Container>
