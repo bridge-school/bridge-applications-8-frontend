@@ -8,7 +8,7 @@ export const Container = styled.div`
 
 export const Label = styled.label`
   padding: 0.5rem 0;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: bold;
   color: var(--black);
   ${tachyons}
@@ -23,11 +23,12 @@ export const InputField = styled.input`
 `;
 
 export const SelectField = styled.select`
-  -webkit-appearance: none;
   padding: 0.75rem;
   border-color: var(--light-grey);
   background: var(--off-white) url(${arrowIcon}) 99% center no-repeat;
   font-size: 1rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   ${tachyons}
 
   &::-ms-expand {
