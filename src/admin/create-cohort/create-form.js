@@ -1,6 +1,7 @@
 import React from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field } from "formik";
 import CustomInput from "../../common/forms/custom-input";
+import CustomSelect from "../../common/forms/custom-select";
 
 export default class CreateForm extends React.Component {
   handleSubmit = (values, { props = this.props, setSubmitting }) => {
@@ -15,14 +16,14 @@ export default class CreateForm extends React.Component {
       <Formik
         initialValues={{
           cohortName: "",
-          cohorttype: ""
+          cohortType: ""
         }}
         validate={values => {
           let errors = {};
           if (!values.cohortName)
             errors.cohortName = "You must input a cohort name";
-          if (!values.cohorttype)
-            errors.cohorttype = "You must select a cohort type";
+          if (!values.cohortType)
+            errors.cohortType = "You must select a cohort type";
           return errors;
         }}
         onSubmit={this.props.handleSubmit}
@@ -35,13 +36,11 @@ export default class CreateForm extends React.Component {
                 placeholder="Cohort 1"
                 component={CustomInput}
               />
-              <ErrorMessage name="cohorttype" />
-              <Field name="cohorttype" component="select">
-                <option value="">Select Cohort Type</option>
-                <option value="frontend">Front End</option>
-                <option value="backend">Back End</option>
-                <option value="productdesign">Product Design</option>
-              </Field>
+              <Field
+                name="cohortType"
+                label="Cohort Type"
+                component={CustomSelect}
+              ></Field>
               <button type="submit" disabled={formProps.isSubmitting}>
                 Submit Form
               </button>
