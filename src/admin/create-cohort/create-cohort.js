@@ -1,13 +1,16 @@
 import React from "react";
-import CreateForm from "./create-form"
+import { useTranslation } from "react-i18next";
+import CreateForm from "./create-form";
 
 const CreateCohort = () => {
+  const { t } = useTranslation();
+
   return (
     <>
-      <h1>Create New Cohort Application Form</h1>
+      <h1>{t("admin.create-cohort.create-new-cohort-application-form")}</h1>
       <CreateForm />
     </>
   );
-}
+};
 
 export default CreateCohort;

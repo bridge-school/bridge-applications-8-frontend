@@ -15,12 +15,13 @@ const Button = ({ children, color = 'green', size = 'default' }) => {
   const Button = styled.button`
     border: 0;
     cursor: pointer;
-    order-radius: 0;
+    border-radius: 0;
     outline: 0;
     background-color: ${colorValue};
     min-width: 220px;
     font-size: ${size === 'large' ? '1.15rem' : '1rem'};
     font-weight: ${size === 'large' ? 'bold' : '500'};
+    text-transform: ${size === 'large' ? 'uppercase' : 'none'};
     padding: ${size === 'large' ? '0.9em 4rem' : '0.88em 1.5rem'};
     ${tachyons}
   `;
