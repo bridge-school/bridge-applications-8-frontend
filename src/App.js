@@ -11,7 +11,7 @@ import PageLayout from './common/page-layout/page-layout';
 function App() {
   useEffect(() => {
     const fetchData = async () => {
-      return await request("health");
+      return await request("cohorts");
     };
     fetchData();
   });
