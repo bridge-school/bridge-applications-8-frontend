@@ -1,5 +1,6 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
+import { Translation } from "react-i18next";
 import CustomInput from "../../common/forms/custom-input";
 import CustomSelect from "../../common/forms/custom-select";
 
@@ -12,42 +13,59 @@ export default class CreateForm extends React.Component {
   };
 
   render() {
+    // const { t } = useTranslation();
     return (
-      <Formik
-        initialValues={{
-          cohortName: "",
-          cohortType: ""
-        }}
-        validate={values => {
-          let errors = {};
-          if (!values.cohortName)
-            errors.cohortName = "You must input a cohort name";
-          if (!values.cohortType)
-            errors.cohortType = "You must select a cohort type";
-          return errors;
-        }}
-        onSubmit={this.props.handleSubmit}
-        render={formProps => {
-          return (
-            <Form>
-              <Field
-                name="cohortName"
-                label="Cohort Name"
-                placeholder="Cohort 1"
-                component={CustomInput}
-              />
-              <Field
-                name="cohortType"
-                label="Cohort Type"
-                component={CustomSelect}
-              ></Field>
-              <button type="submit" disabled={formProps.isSubmitting}>
-                Submit Form
-              </button>
-            </Form>
-          );
-        }}
-      />
+      <Translation>
+        {t => (
+          <Formik
+            initialValues={{
+              cohortName: "",
+              cohortType: ""
+            }}
+            validate={values => {
+              let errors = {};
+              if (!values.cohortName)
+                errors.cohortName = t(
+                  "admin.create-cohort.form.cohort-name-error"
+                );
+              if (!values.cohortType)
+                errors.cohortType = t(
+                  "admin.create-cohort.form.cohort-type-error"
+                );
+              return errors;
+            }}
+            onSubmit={this.props.handleSubmit}
+            render={formProps => {
+              return (
+                <Form>
+                  <Field
+                    name="cohortName"
+                    label={t("admin.create-cohort.form.cohort-name-label")}
+                    placeholder="Cohort 1"
+                    component={CustomInput}
+                  />
+                  <Field
+                    name="cohortType"
+                    label={t("admin.create-cohort.form.cohort-type-label")}
+                    optionsLabel={t(
+                      "admin.create-cohort.form.cohort-type-selector"
+                    )}
+                    options={[
+                      t("admin.create-cohort.form.cohort-type-fe"),
+                      t("admin.create-cohort.form.cohort-type-be"),
+                      t("admin.create-cohort.form.cohort-type-design")
+                    ]}
+                    component={CustomSelect}
+                  ></Field>
+                  <button type="submit" disabled={formProps.isSubmitting}>
+                    Submit Form
+                  </button>
+                </Form>
+              );
+            }}
+          />
+        )}
+      </Translation>
     );
   }
 }

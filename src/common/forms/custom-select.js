@@ -7,6 +7,8 @@ const CustomSelect = ({
   form: { touched, errors },
   ...props
 }) => {
+  const removeSpaces = string => string.toLowerCase().replace(" ", "-");
+
   return (
     <Container db mv2>
       <Label db>{props.label}</Label>
@@ -14,10 +16,10 @@ const CustomSelect = ({
         <ErrorMessage name={field.name} />
       </Error>
       <SelectField br2 ba bw1 w_100 name="cohorttype" component="select">
-        <option value="">Select Cohort Type</option>
-        <option value="frontend">Front End</option>
-        <option value="backend">Back End</option>
-        <option value="productdesign">Product Design</option>
+        <option value="">{props.optionsLabel}</option>
+        {props.options.map(option => (
+          <option value={removeSpaces(option)}>{option}</option>
+        ))}
       </SelectField>
     </Container>
   );
