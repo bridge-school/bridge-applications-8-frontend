@@ -1,5 +1,5 @@
 import React from "react";
-import CreateForm from "./create-form"
+import CreateForm from "./create-form";
 
 const CreateCohort = () => {
   return (
@@ -8,6 +8,6 @@ const CreateCohort = () => {
       <CreateForm />
     </>
   );
-}
+};
 
 export default CreateCohort;
