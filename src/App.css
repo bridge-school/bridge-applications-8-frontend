@@ -1,8 +1,25 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700&display=swap");
+
 :root {
-  --purple: #4E57CA;
+  --purple: #4f57ca;
   --white: #fff;
+  --off-white: #f6f6f6;
+  --light-grey: #979797;
+  --black: #26262a;
+  --base-font-family: "Open Sans", sans-serif;
+  --spacing-extra-small: 0.5rem;
+  --spacing-small: 1rem;
+  --spacing-medium: 2rem;
 }
 
 body {
-  font-size: 62.5%
+  box-sizing: border-box;
+  font-size: 62.5%;
+  font-family: var(--base-font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body * {
+  box-sizing: border-box;
 }
