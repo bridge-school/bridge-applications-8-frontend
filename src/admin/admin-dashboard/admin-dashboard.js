@@ -24,6 +24,8 @@ const AdminDashboard = (props) => {
   useEffect(() => {
       const { getCohorts } = props;
       getCohorts();
+      // we only want to get cohorts on first load of Admin Dashboard
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
 
