@@ -1,11 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from 'react-redux';
+import getCohorts from '../../store/actions/getCohorts';
 import { useTranslation } from "react-i18next";
 import styled from 'styled-components';
 import tachyons from 'styled-components-tachyons';
 import Button from '../../common/button/button';
 import CohortCard from '../../common/cohort-card/cohort-card';
 
-const AdminDashboard = () => {
+const renderCohortsList = ({ cohorts, loading }) => {
+  if (loading) return 'Loading...';
+
+  return cohorts.map(cohort => {
+    return (
+      <CohortCard
+        name={cohort.name}
+        type={cohort.type}
+      ></CohortCard>
+    )
+  });
+}
+
+const AdminDashboard = (props) => {
+  useEffect(() => {
+      const { getCohorts } = props;
+      getCohorts();
+  }, [])
+
+
   const { t } = useTranslation();
   const H1 = styled.h1`
     padding: 0;
@@ -28,19 +49,33 @@ const AdminDashboard = () => {
     ${tachyons}
   `;
 
-  return(
-    <Wrapper flex flex_column>
-      <HeadWrapper flex justify_between>
-        <H1 di>{t('admin.dashboard.cohort-application-form')}</H1>
-        <Button color="green" size="large">{t('admin.dashboard.create-application-group')}</Button>
-      </HeadWrapper>
-      <CohortCardWrapper>
-          <CohortCard name="Cohort 0" type="frontend development"></CohortCard>
-          <CohortCard name="Cohort 7" type="design"></CohortCard>
-          <CohortCard name="Cohort 2" type="backend development"></CohortCard>
-      </CohortCardWrapper>
-    </Wrapper>
-  )
+    return(
+      <Wrapper flex flex_column>
+        <HeadWrapper flex justify_between>
+          <H1 di>{t('admin.dashboard.cohort-application-form')}</H1>
+          <Button color="green" size="large">{t('admin.dashboard.create-application-group')}</Button>
+        </HeadWrapper>
+        <CohortCardWrapper>
+            {renderCohortsList(props)}
+        </CohortCardWrapper>
+      </Wrapper>
+    )
 }
 
-export default AdminDashboard;
+const mapStateToProps = state => {
+  return {
+    cohorts: state.cohorts.data,
+    loading: state.cohorts.loading
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getCohorts: () => dispatch(getCohorts())
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AdminDashboard);
