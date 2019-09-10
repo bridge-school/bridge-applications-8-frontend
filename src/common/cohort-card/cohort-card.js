@@ -31,7 +31,7 @@ const CohortCard = ({name, type}) => {
 
 
   return (
-    <CohortCard flex justify_between items_center>
+    <CohortCard flex justify_between items_center flex_wrap>
       <H2>{name}</H2>
 
       <Button color={buttonColor} size="small">{type}</Button>
