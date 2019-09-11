@@ -4,8 +4,7 @@ import { Translation } from "react-i18next";
 import {
   Container,
   Label,
-  InputField,
-  Error
+  InputField
 } from "../../common/forms/form-styles";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
