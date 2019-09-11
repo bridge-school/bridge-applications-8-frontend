@@ -1,6 +1,8 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import { Translation } from "react-i18next";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import CustomInput from "../../common/forms/custom-input";
 import CustomSelect from "../../common/forms/custom-select";
 
@@ -20,7 +22,10 @@ export default class CreateForm extends React.Component {
           <Formik
             initialValues={{
               cohortName: "",
-              cohortType: ""
+              cohortType: "",
+              dateOpen: "",
+              dateClosed: "",
+              dateOfResponse: ""
             }}
             validate={values => {
               let errors = {};
@@ -57,6 +62,37 @@ export default class CreateForm extends React.Component {
                     ]}
                     component={CustomSelect}
                   ></Field>
+
+                  <Field
+                    name="dateOpen"
+                    label="test"
+                    component={DatePicker}
+                    onChange={date => {
+                      formProps.setFieldValue("dateOpen", date);
+                    }}
+                    selected={formProps.values.dateOpen}
+                    />
+
+                  <Field
+                    name="dateClosed"
+                    label="test"
+                    component={DatePicker}
+                    onChange={date => {
+                      formProps.setFieldValue("dateClosed", date);
+                    }}
+                    selected={formProps.values.dateClosed}
+                    />
+
+                    <Field
+                      name="dateOfResponse"
+                      label="test"
+                      component={DatePicker}
+                      onChange={date => {
+                        formProps.setFieldValue("dateOfResponse", date);
+                      }}
+                      selected={formProps.values.dateOfResponse}
+                      />
+
                   <button type="submit" disabled={formProps.isSubmitting}>
                     Submit Form
                   </button>
