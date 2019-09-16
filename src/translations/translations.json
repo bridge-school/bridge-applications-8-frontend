@@ -20,7 +20,7 @@
             "add-field-button": "Add New Question",
             "create-app-group": "Create Application Group",
             "cohort-application-question-error": "Question is Required",
-            "cohort-type-question-error": "Question Types is Required",
+            "cohort-type-question-error": "Question Type is Required",
             "question": "Question ",
             "type": "Type ",
             "input": "input",

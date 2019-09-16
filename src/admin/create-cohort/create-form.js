@@ -34,7 +34,7 @@ export default class CreateForm extends React.Component {
             initialValues={{
               cohortName: "",
               cohortType: "",
-              appQuestions: [],
+              questions: [],
               dateOpen: "",
               dateClosed: "",
               dateOfResponse: ""
@@ -49,15 +49,18 @@ export default class CreateForm extends React.Component {
                 errors.cohortType = t(
                   "admin.create-cohort.form.cohort-type-error"
                 );
-              values.appQuestions.map((field, index) => {
-                if (!values[`question${index}`])
-                  errors[`question${index}`] = t(
+
+              values.questions.map((field, index) => {
+                if (!values.questions[index][`label${index}`]) {
+                  errors[`questions.${index}.label${index}`] = t(
                     "admin.create-cohort.form.cohort-application-question-error"
                   );
-                if (!values[`questionType${index}`])
-                  errors[`questionType${index}`] = t(
+                }
+                if (!values.questions[index][`type${index}`]) {
+                  errors[`questions.${index}.type${index}`] = t(
                     "admin.create-cohort.form.cohort-type-question-error"
                   );
+                }
                 return errors;
               });
 
@@ -65,7 +68,6 @@ export default class CreateForm extends React.Component {
             }}
             onSubmit={this.props.handleSubmit}
             render={formProps => {
-              console.log(formProps.values);
               return (
                 <Form>
                   <Field
@@ -134,7 +136,10 @@ export default class CreateForm extends React.Component {
                     {t("admin.create-cohort.form.title-application-questions")}
                   </H2>
                   <div id="new-cohort-applciation">
-                    <RenderDyanmicFields formProps={formProps} />
+                    <RenderDyanmicFields
+                      formProps={formProps}
+                      errors={formProps.errors}
+                    />
                   </div>
                   <Button
                     type="submit"
@@ -143,9 +148,6 @@ export default class CreateForm extends React.Component {
                   >
                     {t("admin.create-cohort.form.create-app-group")}
                   </Button>
-                  <button type="submit" disabled={formProps.isSubmitting}>
-                    Submit Form
-                  </button>
                 </Form>
               );
             }}

@@ -7,25 +7,26 @@ import CustomCheckbox from "../../common/forms/custom-checkbox";
 import Button from "../../common/button/button";
 import { Row } from "./form-styles";
 
-const RenderDyanmicFields = ({ formProps }) => {
+const RenderDyanmicFields = ({ formProps, errors }) => {
   const { t } = useTranslation();
   return (
     <FieldArray
-      name="appQuestions"
+      name="questions"
       render={arrayHelpers => (
         <>
-          {formProps.values.appQuestions.length > 0
-            ? formProps.values.appQuestions.map((fieldItem, index) => (
+          {formProps.values.questions.length > 0
+            ? formProps.values.questions.map((fieldItem, index) => (
                 <Row flex key={index}>
                   <Field
-                    name={`appQuestions.${index}.question${index}`}
+                    name={`questions.${index}.label${index}`}
                     label={`${t(
                       "admin.create-cohort.form.question"
                     )} #${index}`}
+                    error={errors[`questions.${index}.label${index}`]}
                     component={CustomInput}
                   />
                   <Field
-                    name={`appQuestions.${index}.questionType${index}`}
+                    name={`questions.${index}.type${index}`}
                     label={`${t(
                       "admin.create-cohort.form.question"
                     )} #${index} ${t("admin.create-cohort.form.type")}`}
@@ -34,10 +35,11 @@ const RenderDyanmicFields = ({ formProps }) => {
                       t("admin.create-cohort.form.dropdown"),
                       t("admin.create-cohort.form.checkbox")
                     ]}
+                    error={errors[`questions.${index}.type${index}`]}
                     component={CustomSelect}
                   />
                   <Field
-                    name={`appQuestions.${index}.questionRequired${index}`}
+                    name={`questions.${index}.required${index}`}
                     label={t("admin.create-cohort.form.isRequired")}
                     component={CustomCheckbox}
                   />
@@ -51,9 +53,9 @@ const RenderDyanmicFields = ({ formProps }) => {
             disabled={formProps.values.isSubmitting}
             eventHandler={() =>
               arrayHelpers.push({
-                [`question${formProps.values.appQuestions.length}`]: "",
-                [`questionType${formProps.values.appQuestions.length}`]: "",
-                [`questionRequired${formProps.values.appQuestions.length}`]: ""
+                [`label${formProps.values.questions.length}`]: "",
+                [`type${formProps.values.questions.length}`]: "",
+                [`required${formProps.values.questions.length}`]: ""
               })
             }
           >

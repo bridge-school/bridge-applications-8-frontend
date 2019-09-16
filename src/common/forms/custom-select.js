@@ -4,11 +4,10 @@ import { Container, Label, SelectField, Error } from "./form-styles";
 
 const CustomSelect = ({
   field, // { name, value, onChange, onBlur }
-  form: { touched, errors },
+  form,
   ...props
 }) => {
   const removeSpaces = string => string.toLowerCase().replace(" ", "-");
-
   return (
     <Container db mv2>
       <Label db>{props.label}</Label>
