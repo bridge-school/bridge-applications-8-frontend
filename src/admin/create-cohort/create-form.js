@@ -1,16 +1,22 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import { Translation } from "react-i18next";
-import {
-  Container,
-  Label,
-  InputField
-} from "../../common/forms/form-styles";
+import { Container, Label, InputField } from "../../common/forms/form-styles";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
 import CustomInput from "../../common/forms/custom-input";
 import CustomSelect from "../../common/forms/custom-select";
+import RenderDyanmicFields from "../../common/forms/dynamic-fields";
+import Button from "../../common/button/button";
+import tachyons from "styled-components-tachyons";
+import styled from "styled-components";
+
+const H2 = styled.h2`
+  margin-top: 2rem;
+  margin-bottom: 0;
+  font-size: 1.25rem;
+  ${tachyons}
+`;
 
 export default class CreateForm extends React.Component {
   handleSubmit = (values, { props = this.props, setSubmitting }) => {
@@ -21,7 +27,6 @@ export default class CreateForm extends React.Component {
   };
 
   render() {
-    // const { t } = useTranslation();
     return (
       <Translation>
         {t => (
@@ -29,6 +34,7 @@ export default class CreateForm extends React.Component {
             initialValues={{
               cohortName: "",
               cohortType: "",
+              questions: [],
               dateOpen: "",
               dateClosed: "",
               dateOfResponse: ""
@@ -43,6 +49,21 @@ export default class CreateForm extends React.Component {
                 errors.cohortType = t(
                   "admin.create-cohort.form.cohort-type-error"
                 );
+
+              values.questions.map((field, index) => {
+                if (!values.questions[index][`label${index}`]) {
+                  errors[`questions.${index}.label${index}`] = t(
+                    "admin.create-cohort.form.cohort-application-question-error"
+                  );
+                }
+                if (!values.questions[index][`type${index}`]) {
+                  errors[`questions.${index}.type${index}`] = t(
+                    "admin.create-cohort.form.cohort-type-question-error"
+                  );
+                }
+                return errors;
+              });
+
               return errors;
             }}
             onSubmit={this.props.handleSubmit}
@@ -68,10 +89,11 @@ export default class CreateForm extends React.Component {
                     ]}
                     component={CustomSelect}
                   ></Field>
-
                   <Container flex justify_between>
                     <Container>
-                      <Label db>{t("admin.create-cohort.form.date-open")}</Label>
+                      <Label db>
+                        {t("admin.create-cohort.form.date-open")}
+                      </Label>
                       <Field
                         name="dateOpen"
                         component={DatePicker}
@@ -79,11 +101,13 @@ export default class CreateForm extends React.Component {
                           formProps.setFieldValue("dateOpen", date);
                         }}
                         selected={formProps.values.dateOpen}
-                        customInput={<InputField br2 ba bw1 w_100/>}
+                        customInput={<InputField br2 ba bw1 w_100 />}
                       />
                     </Container>
                     <Container>
-                      <Label db>{t("admin.create-cohort.form.date-closed")}</Label>
+                      <Label db>
+                        {t("admin.create-cohort.form.date-closed")}
+                      </Label>
                       <Field
                         name="dateClosed"
                         component={DatePicker}
@@ -91,11 +115,13 @@ export default class CreateForm extends React.Component {
                           formProps.setFieldValue("dateClosed", date);
                         }}
                         selected={formProps.values.dateClosed}
-                        customInput={<InputField br2 ba bw1 w_100/>}
+                        customInput={<InputField br2 ba bw1 w_100 />}
                       />
                     </Container>
                     <Container>
-                      <Label db>{t("admin.create-cohort.form.date-of-response")}</Label>
+                      <Label db>
+                        {t("admin.create-cohort.form.date-of-response")}
+                      </Label>
                       <Field
                         name="dateOfResponse"
                         component={DatePicker}
@@ -103,14 +129,26 @@ export default class CreateForm extends React.Component {
                           formProps.setFieldValue("dateOfResponse", date);
                         }}
                         selected={formProps.values.dateOfResponse}
-                        customInput={<InputField br2 ba bw1 w_100/>}
+                        customInput={<InputField br2 ba bw1 w_100 />}
                       />
                     </Container>
                   </Container>
-
-                  <button type="submit" disabled={formProps.isSubmitting}>
-                    Submit Form
-                  </button>
+                  <H2>
+                    {t("admin.create-cohort.form.title-application-questions")}
+                  </H2>
+                  <div id="new-cohort-applciation">
+                    <RenderDyanmicFields
+                      formProps={formProps}
+                      errors={formProps.errors}
+                    />
+                  </div>
+                  <Button
+                    type="submit"
+                    size="feature"
+                    disabled={formProps.isSubmitting}
+                  >
+                    {t("admin.create-cohort.form.create-app-group")}
+                  </Button>
                 </Form>
               );
             }}

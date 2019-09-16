@@ -6,6 +6,21 @@ export const Container = styled.div`
   ${tachyons}
 `;
 
+export const Row = styled.div`
+  ${tachyons}
+
+  > div {
+    &:first-of-type {
+      flex: 1;
+      margin-right: 2rem;
+    }
+
+    &:last-of-type {
+      margin-left: 2rem;
+    }
+  }
+`;
+
 export const Label = styled.label`
   padding: 0.5rem 0;
   font-size: 1rem;
@@ -37,6 +52,7 @@ export const SelectField = styled.select`
 `;
 
 export const Error = styled.div`
-  font-size: 1rem;
+  height: 1rem;
+  font-size: 0.75rem;
   color: red;
 `;
