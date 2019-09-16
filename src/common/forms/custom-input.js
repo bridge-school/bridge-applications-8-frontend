@@ -13,7 +13,16 @@ const CustomInput = ({
       <Error>
         <ErrorMessage name={field.name} />
       </Error>
-      <InputField br2 ba bw1 w_100 {...field} {...props} type="text" />
+      <InputField
+        br2
+        ba
+        bw1
+        w_100
+        {...field}
+        {...props}
+        type="text"
+        value={field.value || ""}
+      />
     </Container>
   );
 };

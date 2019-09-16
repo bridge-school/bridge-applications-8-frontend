@@ -1,12 +1,10 @@
 import React from "react";
 import { Field, FieldArray } from "formik";
 import { useTranslation } from "react-i18next";
-import tachyons from "styled-components-tachyons";
 import CustomInput from "../../common/forms/custom-input";
 import CustomSelect from "../../common/forms/custom-select";
 import CustomCheckbox from "../../common/forms/custom-checkbox";
 import Button from "../../common/button/button";
-import styled from "styled-components";
 import { Row } from "./form-styles";
 
 const RenderDyanmicFields = ({ formProps }) => {
@@ -20,15 +18,14 @@ const RenderDyanmicFields = ({ formProps }) => {
             ? formProps.values.appQuestions.map((fieldItem, index) => (
                 <Row flex key={index}>
                   <Field
-                    name={`question${index}`}
+                    name={`appQuestions.${index}.question${index}`}
                     label={`${t(
                       "admin.create-cohort.form.question"
                     )} #${index}`}
                     component={CustomInput}
                   />
-
                   <Field
-                    name={`questionType${index}`}
+                    name={`appQuestions.${index}.questionType${index}`}
                     label={`${t(
                       "admin.create-cohort.form.question"
                     )} #${index} ${t("admin.create-cohort.form.type")}`}
@@ -40,7 +37,7 @@ const RenderDyanmicFields = ({ formProps }) => {
                     component={CustomSelect}
                   />
                   <Field
-                    name={`questionRequired${index}`}
+                    name={`appQuestions.${index}.questionRequired${index}`}
                     label={t("admin.create-cohort.form.isRequired")}
                     component={CustomCheckbox}
                   />
@@ -54,10 +51,9 @@ const RenderDyanmicFields = ({ formProps }) => {
             disabled={formProps.values.isSubmitting}
             eventHandler={() =>
               arrayHelpers.push({
-                [`question${formProps.values.appQuestions.length + 1}`]: "",
-                [`questionType${formProps.values.appQuestions.length + 1}`]: "",
-                [`questionRequired${formProps.values.appQuestions.length +
-                  1}`]: ""
+                [`question${formProps.values.appQuestions.length}`]: "",
+                [`questionType${formProps.values.appQuestions.length}`]: "",
+                [`questionRequired${formProps.values.appQuestions.length}`]: ""
               })
             }
           >

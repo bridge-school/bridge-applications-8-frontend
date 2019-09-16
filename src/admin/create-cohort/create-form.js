@@ -1,36 +1,15 @@
 import React from "react";
-import { Formik, Form, Field, FieldArray } from "formik";
+import { Formik, Form, Field } from "formik";
 import { Translation } from "react-i18next";
-import {
-  Container,
-  Label,
-  InputField
-} from "../../common/forms/form-styles";
+import { Container, Label, InputField } from "../../common/forms/form-styles";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import CustomInput from "../../common/forms/custom-input";
 import CustomSelect from "../../common/forms/custom-select";
-import CustomCheckbox from "../../common/forms/custom-checkbox";
 import RenderDyanmicFields from "../../common/forms/dynamic-fields";
 import Button from "../../common/button/button";
 import tachyons from "styled-components-tachyons";
-
 import styled from "styled-components";
-
-const Row = styled.div`
-  ${tachyons}
-
-  > div {
-    &:first-of-type {
-      flex: 1;
-      margin-right: 2rem;
-    }
-
-    &:last-of-type {
-      margin-left: 2rem;
-    }
-  }
-`;
 
 const H2 = styled.h2`
   margin-top: 2rem;
@@ -55,7 +34,7 @@ export default class CreateForm extends React.Component {
             initialValues={{
               cohortName: "",
               cohortType: "",
-              appQuestions: []
+              appQuestions: [],
               dateOpen: "",
               dateClosed: "",
               dateOfResponse: ""
@@ -86,6 +65,7 @@ export default class CreateForm extends React.Component {
             }}
             onSubmit={this.props.handleSubmit}
             render={formProps => {
+              console.log(formProps.values);
               return (
                 <Form>
                   <Field
@@ -107,6 +87,49 @@ export default class CreateForm extends React.Component {
                     ]}
                     component={CustomSelect}
                   />
+                  <Container dt>
+                    <Container dt-row>
+                      <Container dtc ph2>
+                        <Label db>Date Open</Label>
+                        <Field
+                          name="dateOpen"
+                          label="test"
+                          component={DatePicker}
+                          onChange={date => {
+                            formProps.setFieldValue("dateOpen", date);
+                          }}
+                          selected={formProps.values.dateOpen}
+                          customInput={<InputField br2 ba bw1 />}
+                        />
+                      </Container>
+                      <Container dtc ph2>
+                        <Label db>Date Closed</Label>
+                        <Field
+                          name="dateClosed"
+                          label="test"
+                          component={DatePicker}
+                          onChange={date => {
+                            formProps.setFieldValue("dateClosed", date);
+                          }}
+                          selected={formProps.values.dateClosed}
+                          customInput={<InputField br2 ba bw1 />}
+                        />
+                      </Container>
+                      <Container dtc ph2>
+                        <Label db>Date of Response</Label>
+                        <Field
+                          name="dateOfResponse"
+                          label="test"
+                          component={DatePicker}
+                          onChange={date => {
+                            formProps.setFieldValue("dateOfResponse", date);
+                          }}
+                          selected={formProps.values.dateOfResponse}
+                          customInput={<InputField br2 ba bw1 />}
+                        />
+                      </Container>
+                    </Container>
+                  </Container>
                   <H2>
                     {t("admin.create-cohort.form.title-application-questions")}
                   </H2>
@@ -120,52 +143,6 @@ export default class CreateForm extends React.Component {
                   >
                     {t("admin.create-cohort.form.create-app-group")}
                   </Button>
-                  ></Field>
-                  <Container dt>
-                    <Container dt-row>
-                      <Container dtc ph2>
-                        <Label db>Date Open</Label>
-                        <Field
-                          name="dateOpen"
-                          label="test"
-                          component={DatePicker}
-                          onChange={date => {
-                            formProps.setFieldValue("dateOpen", date);
-                          }}
-                          selected={formProps.values.dateOpen}
-                          customInput={<InputField br2 ba bw1/>}
-                        />
-                      </Container>
-                      <Container dtc ph2>
-                        <Label db>Date Closed</Label>
-                        <Field
-                          name="dateClosed"
-                          label="test"
-                          component={DatePicker}
-                          onChange={date => {
-                            formProps.setFieldValue("dateClosed", date);
-                          }}
-                          selected={formProps.values.dateClosed}
-                          customInput={<InputField br2 ba bw1/>}
-                        />
-                      </Container>
-
-                      <Container dtc ph2>
-                        <Label db>Date of Response</Label>
-                        <Field
-                          name="dateOfResponse"
-                          label="test"
-                          component={DatePicker}
-                          onChange={date => {
-                            formProps.setFieldValue("dateOfResponse", date);
-                          }}
-                          selected={formProps.values.dateOfResponse}
-                          customInput={<InputField br2 ba bw1/>}
-                        />
-                      </Container>
-                    </Container>
-                  </Container>
-
                   <button type="submit" disabled={formProps.isSubmitting}>
                     Submit Form
                   </button>
