@@ -7,21 +7,7 @@ import CustomSelect from "../../common/forms/custom-select";
 import CustomCheckbox from "../../common/forms/custom-checkbox";
 import Button from "../../common/button/button";
 import styled from "styled-components";
-
-const Row = styled.div`
-  ${tachyons}
-
-  > div {
-    &:first-of-type {
-      flex: 1;
-      margin-right: 2rem;
-    }
-
-    &:last-of-type {
-      margin-left: 2rem;
-    }
-  }
-`;
+import { Row } from "./form-styles";
 
 const RenderDyanmicFields = ({ formProps }) => {
   const { t } = useTranslation();
