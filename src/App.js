@@ -9,7 +9,6 @@ import {
 } from "react-router-dom";
 import AdminDashboard from "./admin/admin-dashboard/admin-dashboard";
 import CreateCohort from "./admin/create-cohort/create-cohort";
-import LandingPage from "./common/landing-page/landing-page";
 import NoMatches from "./common/no-matches/no-matches";
 import PageLayout from "./common/page-layout/page-layout";
 

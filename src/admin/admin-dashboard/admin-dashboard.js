@@ -4,7 +4,6 @@ import getCohorts from "../../store/actions/getCohorts";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import tachyons from "styled-components-tachyons";
-import Button from "../../common/button/button";
 import LinkButton from "../../common/button/link";
 import CohortCard from "../../common/cohort-card/cohort-card";
 
