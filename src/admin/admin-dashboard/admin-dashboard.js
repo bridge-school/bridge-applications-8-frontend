@@ -11,7 +11,13 @@ const renderCohortsList = ({ cohorts, loading }) => {
   if (loading) return "Loading...";
 
   return cohorts.map(cohort => {
-    return <CohortCard name={cohort.name} type={cohort.type}></CohortCard>;
+    return (
+      <CohortCard
+        key={cohort.name}
+        name={cohort.name}
+        type={cohort.type}
+      ></CohortCard>
+    );
   });
 };
 
