@@ -7,7 +7,7 @@
           "create-application-group": "Create Application Group"
         },
         "create-cohort": {
-          "create-new-cohort-application-form": " Create New Cohort Application Form",
+          "create-new-cohort-application-form": "Create New Cohort Application Form",
           "form": {
             "cohort-name-label": "Cohort Name",
             "cohort-name-error": "You must input a Cohort Name",
@@ -16,7 +16,10 @@
             "cohort-type-selector": "Select Cohort Type",
             "cohort-type-fe": "Front End",
             "cohort-type-be": "Back End",
-            "cohort-type-design": "Product Design"
+            "cohort-type-design": "Product Design",
+            "date-open": "Date Open",
+            "date-closed": "Date Closed",
+            "date-of-response": "Date of Response"
           }
         }
       },
