@@ -7,7 +7,7 @@
           "create-application-group": "Create Application Group"
         },
         "create-cohort": {
-          "create-new-cohort-application-form": " Create New Cohort Application Form",
+          "create-new-cohort-application-form": "Create New Cohort Application Form",
           "form": {
             "cohort-name-label": "Cohort Name",
             "cohort-name-error": "You must input a Cohort Name",
@@ -27,7 +27,10 @@
             "checkbox": "checkbox",
             "dropdown": "dropdown",
             "isRequired": "Is Required?",
-            "title-application-questions": "Application Questions"
+            "title-application-questions": "Application Questions",
+            "date-open": "Date Open",
+            "date-closed": "Date Closed",
+            "date-of-response": "Date of Response"
           }
         }
       },

@@ -88,48 +88,49 @@ export default class CreateForm extends React.Component {
                       t("admin.create-cohort.form.cohort-type-design")
                     ]}
                     component={CustomSelect}
-                  />
-                  <Container dt>
-                    <Container dt-row>
-                      <Container dtc ph2>
-                        <Label db>Date Open</Label>
-                        <Field
-                          name="dateOpen"
-                          label="test"
-                          component={DatePicker}
-                          onChange={date => {
-                            formProps.setFieldValue("dateOpen", date);
-                          }}
-                          selected={formProps.values.dateOpen}
-                          customInput={<InputField br2 ba bw1 />}
-                        />
-                      </Container>
-                      <Container dtc ph2>
-                        <Label db>Date Closed</Label>
-                        <Field
-                          name="dateClosed"
-                          label="test"
-                          component={DatePicker}
-                          onChange={date => {
-                            formProps.setFieldValue("dateClosed", date);
-                          }}
-                          selected={formProps.values.dateClosed}
-                          customInput={<InputField br2 ba bw1 />}
-                        />
-                      </Container>
-                      <Container dtc ph2>
-                        <Label db>Date of Response</Label>
-                        <Field
-                          name="dateOfResponse"
-                          label="test"
-                          component={DatePicker}
-                          onChange={date => {
-                            formProps.setFieldValue("dateOfResponse", date);
-                          }}
-                          selected={formProps.values.dateOfResponse}
-                          customInput={<InputField br2 ba bw1 />}
-                        />
-                      </Container>
+                  ></Field>
+                  <Container flex justify_between>
+                    <Container>
+                      <Label db>
+                        {t("admin.create-cohort.form.date-open")}
+                      </Label>
+                      <Field
+                        name="dateOpen"
+                        component={DatePicker}
+                        onChange={date => {
+                          formProps.setFieldValue("dateOpen", date);
+                        }}
+                        selected={formProps.values.dateOpen}
+                        customInput={<InputField br2 ba bw1 w_100 />}
+                      />
+                    </Container>
+                    <Container>
+                      <Label db>
+                        {t("admin.create-cohort.form.date-closed")}
+                      </Label>
+                      <Field
+                        name="dateClosed"
+                        component={DatePicker}
+                        onChange={date => {
+                          formProps.setFieldValue("dateClosed", date);
+                        }}
+                        selected={formProps.values.dateClosed}
+                        customInput={<InputField br2 ba bw1 w_100 />}
+                      />
+                    </Container>
+                    <Container>
+                      <Label db>
+                        {t("admin.create-cohort.form.date-of-response")}
+                      </Label>
+                      <Field
+                        name="dateOfResponse"
+                        component={DatePicker}
+                        onChange={date => {
+                          formProps.setFieldValue("dateOfResponse", date);
+                        }}
+                        selected={formProps.values.dateOfResponse}
+                        customInput={<InputField br2 ba bw1 w_100 />}
+                      />
                     </Container>
                   </Container>
                   <H2>
