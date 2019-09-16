@@ -2,7 +2,7 @@ import React from "react";
 import { ErrorMessage } from "formik";
 import { Container, Label, InputField, Error } from "./form-styles";
 
-const CustomInput = ({
+const CustomCheckbox = ({
   field, // { name, value, onChange, onBlur }
   form: { touched, errors },
   ...props
@@ -13,9 +13,9 @@ const CustomInput = ({
       <Error>
         <ErrorMessage name={field.name} />
       </Error>
-      <InputField br2 ba bw1 w_100 {...field} {...props} type="text" />
+      <InputField br2 ba bw1 w_100 {...field} {...props} type="checkbox" />
     </Container>
   );
 };
 
-export default CustomInput;
+export default CustomCheckbox;
