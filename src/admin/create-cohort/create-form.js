@@ -5,7 +5,9 @@ import tachyons from "styled-components-tachyons";
 import CustomInput from "../../common/forms/custom-input";
 import CustomSelect from "../../common/forms/custom-select";
 import CustomCheckbox from "../../common/forms/custom-checkbox";
+import RenderDyanmicFields from "../../common/forms/dynamic-fields";
 import Button from "../../common/button/button";
+
 import styled from "styled-components";
 
 const Row = styled.div`
@@ -99,68 +101,7 @@ export default class CreateForm extends React.Component {
                     {t("admin.create-cohort.form.title-application-questions")}
                   </H2>
                   <div id="new-cohort-applciation">
-                    <FieldArray
-                      name="appQuestions"
-                      render={arrayHelpers => (
-                        <>
-                          {formProps.values.appQuestions.length > 0
-                            ? formProps.values.appQuestions.map(
-                                (fieldItem, index) => (
-                                  <Row flex key={index}>
-                                    <Field
-                                      name={`question${index}`}
-                                      label={`${t(
-                                        "admin.create-cohort.form.question"
-                                      )} #${index}`}
-                                      component={CustomInput}
-                                    />
-
-                                    <Field
-                                      name={`questionType${index}`}
-                                      label={`${t(
-                                        "admin.create-cohort.form.question"
-                                      )} #${index} ${t(
-                                        "admin.create-cohort.form.type"
-                                      )}`}
-                                      options={[
-                                        t("admin.create-cohort.form.input"),
-                                        t("admin.create-cohort.form.dropdown"),
-                                        t("admin.create-cohort.form.checkbox")
-                                      ]}
-                                      component={CustomSelect}
-                                    />
-                                    <Field
-                                      name={`questionRequired${index}`}
-                                      label={t(
-                                        "admin.create-cohort.form.isRequired"
-                                      )}
-                                      component={CustomCheckbox}
-                                    />
-                                  </Row>
-                                )
-                              )
-                            : null}
-                          <Button
-                            type="button"
-                            size="feature"
-                            color="white"
-                            disabled={formProps.values.isSubmitting}
-                            eventHandler={() =>
-                              arrayHelpers.push({
-                                [`question${formProps.values.appQuestions
-                                  .length + 1}`]: "",
-                                [`questionType${formProps.values.appQuestions
-                                  .length + 1}`]: "",
-                                [`questionRequired${formProps.values
-                                  .appQuestions.length + 1}`]: ""
-                              })
-                            }
-                          >
-                            {t("admin.create-cohort.form.add-field-button")}
-                          </Button>
-                        </>
-                      )}
-                    />
+                    <RenderDyanmicFields formProps={formProps} />
                   </div>
                   <Button
                     type="submit"
