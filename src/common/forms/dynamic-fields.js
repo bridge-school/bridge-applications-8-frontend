@@ -31,9 +31,10 @@ const RenderDyanmicFields = ({ formProps, errors }) => {
                       "admin.create-cohort.form.question"
                     )} #${index} ${t("admin.create-cohort.form.type")}`}
                     options={[
-                      t("admin.create-cohort.form.input"),
+                      t("admin.create-cohort.form.short-answer"),
+                      t("admin.create-cohort.form.paragraph"),
                       t("admin.create-cohort.form.dropdown"),
-                      t("admin.create-cohort.form.checkbox")
+                      t("admin.create-cohort.form.checkboxes")
                     ]}
                     error={errors[`questions.${index}.type${index}`]}
                     component={CustomSelect}
