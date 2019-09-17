@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import getCohorts from "../../store/actions/getCohorts";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import tachyons from "styled-components-tachyons";
 import LinkButton from "../../common/button/link";
 import CohortCard from "../../common/cohort-card/cohort-card";
+import ApplicantForm from "../applicant-form/applicant-form";
 
 const renderCohortsList = ({ cohorts, loading }) => {
   if (loading) return "Loading...";
@@ -16,17 +18,18 @@ const renderCohortsList = ({ cohorts, loading }) => {
         key={cohort.name}
         name={cohort.name}
         type={cohort.type}
+        link={`/apply/${cohort.id}`}
       ></CohortCard>
     );
   });
 };
 
-const AdminDashboard = props => {
+const ApplicantDashboard = props => {
   useEffect(() => {
-      const { getCohorts } = props;
-      getCohorts();
-      // we only want to get cohorts on first load of Admin Dashboard
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+    const { getCohorts } = props;
+    getCohorts();
+    // we only want to get cohorts on first load of Admin Dashboard
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
 
@@ -60,7 +63,15 @@ const AdminDashboard = props => {
           {t("admin.dashboard.create-application-group")}
         </LinkButton>
       </HeadWrapper>
-      <CohortCardWrapper>{renderCohortsList(props)}</CohortCardWrapper>
+      <CohortCardWrapper>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={ApplicantDashboard}/>
+            <Route path="/apply/:id" component={ApplicantForm}/>
+          </Switch>
+        </Router>
+        {renderCohortsList(props)}
+      </CohortCardWrapper>
     </Wrapper>
   );
 };
@@ -81,4 +92,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AdminDashboard);
+)(ApplicantDashboard);
