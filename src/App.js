@@ -5,7 +5,7 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect, 
+  Redirect,
   withRouter
 } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -27,7 +27,7 @@ function App() {
   });
 
   const PageLayoutWithRouter = withRouter(props => <PageLayout {...props} />);
-  
+
   return (
     <Provider store={store}>
       <Router>
