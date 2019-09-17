@@ -5,7 +5,7 @@ import tachyons from 'styled-components-tachyons'
 
 const AdminView = ({ pathname, H4 }) => {
 
-  if (pathname && (pathname.includes('dashboard') || pathname.includes('create-cohort'))) {
+  if (pathname && (pathname.includes('admin-dashboard') || pathname.includes('create-cohort'))) {
     return (
       <H4 di self_center tr>Admin View</H4>
     );

@@ -59,9 +59,6 @@ const ApplicantDashboard = props => {
     <Wrapper flex flex_column>
       <HeadWrapper flex justify_between>
         <H1 di>{t("admin.dashboard.cohort-application-form")}</H1>
-        <LinkButton color="green" size="large" link="/create-cohort">
-          {t("admin.dashboard.create-application-group")}
-        </LinkButton>
       </HeadWrapper>
       <CohortCardWrapper>
         <Router>
