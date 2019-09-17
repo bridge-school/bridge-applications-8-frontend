@@ -5,7 +5,8 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect
+  Redirect, 
+  withRouter
 } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store/store";
@@ -23,17 +24,19 @@ function App() {
     fetchData();
   });
 
+  const PageLayoutWithRouter = withRouter(props => <PageLayout {...props} />);
+  
   return (
     <Provider store={store}>
       <Router>
-        <PageLayout>
+        <PageLayoutWithRouter >
           <Switch>
             <Redirect exact path="/" to="/dashboard" />
             <Route path="/dashboard" component={AdminDashboard} />
             <Route path="/create-cohort" component={CreateCohort} />
             <Route component={NoMatches} />
           </Switch>
-        </PageLayout>
+        </PageLayoutWithRouter>
       </Router>
     </Provider>
   );
