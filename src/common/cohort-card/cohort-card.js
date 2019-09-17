@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import tachyons from "styled-components-tachyons";
-import Button from "../../common/button/button";
+import LinkButton from "../../common/button/link";
 
-const CohortCard = ({name, type}) => {
+const CohortCard = ({name, type, link}) => {
   const CohortCard = styled.div`
     padding: 1.05rem 1.60rem;
     display: block;
@@ -34,7 +34,7 @@ const CohortCard = ({name, type}) => {
     <CohortCard flex justify_between items_center flex_wrap>
       <H2>{name}</H2>
 
-      <Button color={buttonColor} size="small">{type}</Button>
+      <LinkButton color={buttonColor} size="small" link={link}>{type}</LinkButton>
     </CohortCard>
   );
 };
