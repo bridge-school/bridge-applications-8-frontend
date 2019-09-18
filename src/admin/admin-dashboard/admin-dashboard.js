@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import getCohorts from "../../store/actions/getCohorts";
+import { Helmet } from "react-helmet";
 import { useTranslation } from "react-i18next";
+import getCohorts from "../../store/actions/getCohorts";
 import styled from "styled-components";
 import tachyons from "styled-components-tachyons";
 import LinkButton from "../../common/button/link";
@@ -54,6 +55,10 @@ const AdminDashboard = props => {
 
   return (
     <Wrapper flex flex_column>
+      <Helmet>
+        <title>Cohort Application Forms</title>
+        <meta name="description" content="Cohort Application Forms for admin-dashboard" />
+      </Helmet>
       <HeadWrapper flex justify_between>
         <H1 di>{t("admin.dashboard.cohort-application-form")}</H1>
         <LinkButton color="green" size="large" link="/create-cohort">
