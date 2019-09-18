@@ -33,8 +33,8 @@ function App() {
       <Router>
         <PageLayoutWithRouter >
           <Switch>
-            <Redirect exact path="/" to="/dashboard" />
-            <Route path="/dashboard" component={AdminDashboard} />
+            <Redirect exact path="/" to="/admin-dashboard" />
+            <Route path="/admin-dashboard" component={AdminDashboard} />
             <Route path="/create-cohort" component={CreateCohort} />
             <Route path="/applicant-dashboard" component={ApplicantDashboard}/>
             <Route path="/apply/:id" component={ApplicantForm} />
