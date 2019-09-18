@@ -28,6 +28,7 @@
             "dropdown": "dropdown",
             "isRequired": "Is Required?",
             "title-application-questions": "Application Questions",
+            "title-application-form-header": "Apply for Bridge",
             "date-open": "Date Open",
             "date-closed": "Date Closed",
             "date-of-response": "Date of Response"
