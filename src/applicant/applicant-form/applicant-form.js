@@ -28,7 +28,7 @@ const ApplicantForm = props => {
   return (
     <>
       <H1>
-        {t("admin.create-cohort.form.title-application-form-header")}
+        {t("admin.create-cohort.form.title-application-questions")}
       </H1>
       {props.loading ?
           <p>Loading.....</p>
