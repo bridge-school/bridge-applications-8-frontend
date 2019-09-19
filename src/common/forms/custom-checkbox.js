@@ -1,6 +1,5 @@
 import React from "react";
-import { ErrorMessage } from "formik";
-import { Container, Label, InputField, Error } from "./form-styles";
+import { Container, CheckboxLabel, CheckField } from "./form-styles";
 
 const CustomCheckbox = ({
   field, // { name, value, onChange, onBlur }
@@ -9,11 +8,19 @@ const CustomCheckbox = ({
 }) => {
   return (
     <Container db mv2>
-      <Label db>{props.label}</Label>
-      <Error>
-        <ErrorMessage name={field.name} />
-      </Error>
-      <InputField br2 ba bw1 w_100 {...field} {...props} type="checkbox" />
+      <CheckField
+        id={field.name}
+        br2
+        ba
+        bw1
+        w_100
+        {...field}
+        {...props}
+        type="checkbox"
+      />
+      <CheckboxLabel htmlFor={field.name} db>
+        {props.label}
+      </CheckboxLabel>
     </Container>
   );
 };
