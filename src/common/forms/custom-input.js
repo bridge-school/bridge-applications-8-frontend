@@ -9,7 +9,7 @@ const CustomInput = ({
 }) => {
   return (
     <Container db mv2>
-      <Label for={field.name} db {...props}>
+      <Label htmlFor={field.name} db {...props}>
         {props.label}
       </Label>
       <Error>
