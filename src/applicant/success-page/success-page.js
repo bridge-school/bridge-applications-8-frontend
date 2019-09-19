@@ -15,8 +15,8 @@ const SuccessPage = props => {
   const { cohort } = props.location.state;
   return (
     <>
-      <H3>🎉 Congratulations! You have successfully submitted your application to {cohort.name}.</H3>
-      <H3> Applications will be open until {cohort.closeDate.split("T")[0]}. All applicants will hear back from the Bridge team by {cohort.responseDate.split("T")[0]}. 🎉</H3>
+      <H3><span role="img" aria-label="Confetti">🎉</span> Congratulations! You have successfully submitted your application to {cohort.name}.</H3>
+      <H3> Applications will be open until {cohort.closeDate.split("T")[0]}. All applicants will hear back from the Bridge team by {cohort.responseDate.split("T")[0]}. <span role="img" aria-label="Confetti">🎉</span> </H3>
     </>
   );
 };
