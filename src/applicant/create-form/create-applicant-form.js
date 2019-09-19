@@ -3,15 +3,11 @@ import { Formik, Form, Field } from "formik";
 import { useTranslation } from "react-i18next";
 import { Link, Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import SuccessPage from '../success-page/success-page';
-import { Container, Label, InputField } from "../../common/forms/form-styles";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import CustomInput from "../../common/forms/custom-input";
 import CustomSelect from "../../common/forms/custom-select";
 import CustomCheckbox from "../../common/forms/custom-checkbox";
-import RenderDyanmicFields from "../../common/forms/dynamic-fields";
 import Button from "../../common/button/button";
-import LinkButton from "../../common/button/link";
 import tachyons from "styled-components-tachyons";
 import styled from "styled-components";
 
