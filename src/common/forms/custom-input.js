@@ -9,9 +9,11 @@ const CustomInput = ({
 }) => {
   return (
     <Container db mv2>
-      <Label db>{props.label}</Label>
+      <Label db {...props}>
+        {props.label}
+      </Label>
       <Error>
-        <ErrorMessage name={field.name} />
+        <ErrorMessage name={field.name} {...props} />
       </Error>
       <InputField
         br2
