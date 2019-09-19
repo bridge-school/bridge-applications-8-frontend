@@ -56,14 +56,18 @@ export const CheckField = styled.input`
     left: 42%;
     top: 78%;
     transform: rotate(45deg);
-    background: var(--light-grey);
+    background: var(--white);
     width: 5px;
     height: 5px;
-    box-shadow: -5px 0 0 var(--light-grey), 5px 0 0 var(--light-grey),
-      5px -12px 0 var(--light-grey), 5px -5px 0 var(--light-grey),
-      5px -6px 0 var(--light-grey), 5px -9px 0 var(--light-grey),
-      5px -16px 0 var(--light-grey), 5px -19px 0 var(--light-grey),
-      5px -21px 0 var(--light-grey);
+    box-shadow: -5px 0 0 var(--white), 5px 0 0 var(--white),
+      5px -12px 0 var(--white), 5px -5px 0 var(--white), 5px -6px 0 var(--white),
+      5px -9px 0 var(--white), 5px -16px 0 var(--white),
+      5px -19px 0 var(--white), 5px -21px 0 var(--white);
+  }
+
+  &:checked ~ label:before {
+    background: var(--green);
+    border-color: var(--green);
   }
 `;
 
