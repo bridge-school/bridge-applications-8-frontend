@@ -86,7 +86,7 @@ const RenderDyanmicFields = ({ formProps, errors, children }) => {
                 [`label`]: "",
                 [`type`]: "",
                 [`required`]: "",
-                [`options`]: []
+                [`options`]: ""
               })
             }
           >
