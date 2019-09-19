@@ -5,6 +5,7 @@ import tachyons from "styled-components-tachyons";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import CreateApplicantForm from '../create-form/create-applicant-form';
+import { Helmet } from "react-helmet";
 
 
 const ApplicantForm = props => {
@@ -27,18 +28,22 @@ const ApplicantForm = props => {
 
   return (
     <>
-      <H1>
-        {t("admin.create-cohort.form.title-application-questions")}
-      </H1>
+    <Helmet>
+        <title>{t("applicant.apply-for-bridge")}</title>
+          <meta
+          name="description"
+          content={t("applicant.apply-page-meta-description")}
+        />
+      <H1>{t("admin.create-cohort.form.title-application-questions")}</H1>
       {props.loading ?
           <p>Loading.....</p>
         :
         <CreateApplicantForm cohort={props.cohort}/>
       }
+     </Helmet>
     </>
   );
 };
-
 
 const mapStateToProps = state => {
   return {

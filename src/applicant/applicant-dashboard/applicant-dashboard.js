@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
-import getCohorts from "../../store/actions/getCohorts";
+import { Helmet } from "react-helmet";
 import { useTranslation } from "react-i18next";
+import getCohorts from "../../store/actions/getCohorts";
 import styled from "styled-components";
 import tachyons from "styled-components-tachyons";
 import CohortCard from "../../common/cohort-card/cohort-card";
@@ -31,7 +32,6 @@ const ApplicantDashboard = props => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-
   const { t } = useTranslation();
   const H1 = styled.h1`
     padding: 0;
@@ -56,14 +56,21 @@ const ApplicantDashboard = props => {
 
   return (
     <Wrapper flex flex_column>
+      <Helmet>
+        <title>{t("admin.dashboard.cohort-application-form")}</title>
+        <meta
+          name="description"
+          content={t("applicant.apply-page-meta-description")}
+        />
+      </Helmet>
       <HeadWrapper flex justify_between>
         <H1 di>{t("admin.dashboard.cohort-application-form")}</H1>
       </HeadWrapper>
       <CohortCardWrapper>
         <Router>
           <Switch>
-            <Route exact path="/" component={ApplicantDashboard}/>
-            <Route path="/apply/:id" component={ApplicantForm}/>
+            <Route exact path="/" component={ApplicantDashboard} />
+            <Route path="/apply/:id" component={ApplicantForm} />
           </Switch>
         </Router>
         {renderCohortsList(props)}

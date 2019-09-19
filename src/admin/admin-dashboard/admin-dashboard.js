@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import getCohorts from "../../store/actions/getCohorts";
+import { Helmet } from "react-helmet";
 import { useTranslation } from "react-i18next";
+import getCohorts from "../../store/actions/getCohorts";
 import styled from "styled-components";
 import tachyons from "styled-components-tachyons";
 import LinkButton from "../../common/button/link";
@@ -23,12 +24,11 @@ const renderCohortsList = ({ cohorts, loading }) => {
 
 const AdminDashboard = props => {
   useEffect(() => {
-      const { getCohorts } = props;
-      getCohorts();
-      // we only want to get cohorts on first load of Admin Dashboard
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+    const { getCohorts } = props;
+    getCohorts();
+    // we only want to get cohorts on first load of Admin Dashboard
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
 
   const { t } = useTranslation();
   const H1 = styled.h1`
@@ -54,6 +54,13 @@ const AdminDashboard = props => {
 
   return (
     <Wrapper flex flex_column>
+      <Helmet>
+        <title>{t("admin.dashboard.cohort-application-form")}</title>
+        <meta
+          name="description"
+          content={t("admin.dashboard.cohort-application-form-admin")}
+        />
+      </Helmet>
       <HeadWrapper flex justify_between>
         <H1 di>{t("admin.dashboard.cohort-application-form")}</H1>
         <LinkButton color="green" size="large" link="/create-cohort">
