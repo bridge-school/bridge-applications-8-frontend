@@ -32,6 +32,7 @@
             "dropdown": "Dropdown",
             "isRequired": "Is Required?",
             "title-application-questions": "Application Questions",
+            "title-application-form-header": "Apply for Bridge",
             "date-open": "Date Open",
             "date-closed": "Date Closed",
             "date-of-response": "Date of Response"
@@ -42,6 +43,7 @@
         "404-page": "Sorry, this page does not exist"
       },
       "applicant": {
+        "success": "Apply for Bridge",
         "apply-for-bridge": "Apply For Bridge",
         "apply-page-meta-description": "Cohort Application Forms for applicant-dashboard"
       }

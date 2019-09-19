@@ -1,39 +1,12 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import getApplyCohort from "../../store/actions/getApplyCohort";
-import { Helmet } from "react-helmet";
-// import { Formik, Form, Field } from "formik";
-// import { Container, Label, InputField } from "../../common/forms/form-styles";
-// import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
-// import CustomInput from "../../common/forms/custom-input";
-// import CustomSelect from "../../common/forms/custom-select";
-// import RenderDyanmicFields from "../../common/forms/dynamic-fields";
-// import Button from "../../common/button/button";
 import tachyons from "styled-components-tachyons";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
+import CreateApplicantForm from '../create-form/create-applicant-form';
+import { Helmet } from "react-helmet";
 
-const renderApplicationForm = ({ cohort, loading }) => {
-  console.log("render form: ", cohort);
-  if (loading) return "Loading...";
-
-  return (
-    <>
-      <h2>{cohort.name}</h2>
-      {cohort.questions.map(question => {
-        return (
-          <div>
-            <label>{question.label}</label>
-            <p>{question.type}</p>
-            <input type={question.type} />
-            <p>{question.required}</p>
-          </div>
-        );
-      })}
-    </>
-  );
-};
 
 const ApplicantForm = props => {
   const H1 = styled.h1`
@@ -55,15 +28,19 @@ const ApplicantForm = props => {
 
   return (
     <>
-      <Helmet>
+    <Helmet>
         <title>{t("applicant.apply-for-bridge")}</title>
-        <meta
+          <meta
           name="description"
           content={t("applicant.apply-page-meta-description")}
         />
-      </Helmet>
       <H1>{t("admin.create-cohort.form.title-application-questions")}</H1>
-      {renderApplicationForm(props)}
+      {props.loading ?
+          <p>Loading.....</p>
+        :
+        <CreateApplicantForm cohort={props.cohort}/>
+      }
+     </Helmet>
     </>
   );
 };
