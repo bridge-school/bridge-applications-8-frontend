@@ -6,6 +6,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import CustomInput from "../../common/forms/custom-input";
 import CustomSelect from "../../common/forms/custom-select";
+import CustomCheckbox from "../../common/forms/custom-checkbox";
 import RenderDyanmicFields from "../../common/forms/dynamic-fields";
 import Button from "../../common/button/button";
 import tachyons from "styled-components-tachyons";
@@ -18,6 +19,12 @@ const H2 = styled.h2`
   text-transform: capitalize;
   ${tachyons}
 `;
+
+const fieldComponents = {
+  checkbox: CustomCheckbox,
+  dropdown: CustomSelect,
+  text: CustomInput
+};
 
 const CreateApplicantForm = ({cohort}) => {
   return (
@@ -41,6 +48,17 @@ const CreateApplicantForm = ({cohort}) => {
                 label="Email"
                 component={CustomInput}
               />
+              {formProps.values.questions.map( q => {
+
+                return (
+                  <Field
+                    name={q.label}
+                    label={q.label}
+                    component={fieldComponents[q.type]}
+                  />
+                )
+
+              })}
             </Form>
           )
         }}
