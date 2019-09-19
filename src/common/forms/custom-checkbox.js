@@ -18,7 +18,7 @@ const CustomCheckbox = ({
         {...props}
         type="checkbox"
       />
-      <CheckboxLabel htmlFor={field.name} db>
+      <CheckboxLabel htmlFor={field.name} >
         {props.label}
       </CheckboxLabel>
     </Container>
