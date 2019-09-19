@@ -34,13 +34,13 @@ const ApplicantForm = props => {
           name="description"
           content={t("applicant.apply-page-meta-description")}
         />
+     </Helmet>
       <H1>{t("admin.create-cohort.form.title-application-questions")}</H1>
       {props.loading ?
           <p>Loading.....</p>
         :
         <CreateApplicantForm cohort={props.cohort}/>
       }
-     </Helmet>
     </>
   );
 };

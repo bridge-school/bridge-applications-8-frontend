@@ -54,7 +54,7 @@ export const CheckField = styled.input`
     content: "";
     position: absolute;
     left: 42%;
-    top: 78%;
+    top: 70%;
     transform: rotate(45deg);
     background: var(--white);
     width: 5px;
@@ -72,25 +72,24 @@ export const CheckField = styled.input`
 `;
 
 export const CheckboxLabel = styled.label`
-  position: relative;
-  padding: 0.5rem 0;
-  height: 100%;
-  font-size: 1rem;
-  font-weight: bold;
-  color: var(--black);
+    position: relative;
+    padding: 0.5rem 0;
+    height: 100%;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--black);
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: center;
+
   ${tachyons}
 
   &:before {
     content: "";
-    margin-right: 10px;
-    display: block;
-    vertical-align: text-top;
     width: 46px;
     height: 46px;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    position: absolute;
+    margin-top: 1.25rem;
     border: 0.125rem solid var(--light-grey);
     border-radius: 0.25rem;
     background-color: var(--off-white);
