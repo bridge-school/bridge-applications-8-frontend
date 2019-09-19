@@ -9,7 +9,7 @@ const CustomInput = ({
 }) => {
   return (
     <Container db mv2>
-      <Label db {...props}>
+      <Label for={field.name} db {...props}>
         {props.label}
       </Label>
       <Error>
@@ -22,6 +22,7 @@ const CustomInput = ({
         w_100
         {...field}
         {...props}
+        id={field.name}
         type="text"
         value={field.value || ""}
       />
