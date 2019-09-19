@@ -18,11 +18,21 @@ const LinkButton = ({ children, link, color = "green", size = "default" }) => {
     outline: 0;
     background-color: ${colorValue};
     min-width: 220px;
+    text-align: center;
     text-decoration: none;
-    font-size: ${size === "large" ? "1.15rem" : "1rem"};
-    font-weight: ${size === "large" ? "bold" : "500"};
-    text-transform: ${size === "large" ? "uppercase" : "none"};
-    padding: ${size === "large" ? "0.9em 4rem" : "0.88em 1.5rem"};
+    font-size: ${size === "large" || size === "feature" ? "1.15rem" : "1rem"};
+    font-weight: ${size === "large" || size === "feature" ? "bold" : "500"};
+    color: ${color === "white" ? "#08C39D" : "var(--white)"};
+    text-transform: ${size === "large" || size === "feature"
+      ? "uppercase"
+      : "none"};
+    padding: ${size === "large" || size === "feature"
+      ? "0.9em 4rem"
+      : "0.88em 1.5rem"};
+    ${size === "feature"
+      ? "display: block; width: 50%; margin: 2rem auto"
+      : ""};
+    transition: 0.3s all ease;
     ${tachyons}
   `;
 

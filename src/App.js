@@ -17,6 +17,7 @@ import ApplicantDashboard from './applicant/applicant-dashboard/applicant-dashbo
 import ApplicantForm from './applicant/applicant-form/applicant-form';
 import NoMatches from "./common/no-matches/no-matches";
 import PageLayout from "./common/page-layout/page-layout";
+import SuccessPage from './applicant/success-page/success-page';
 
 function App() {
   useEffect(() => {
@@ -38,6 +39,7 @@ function App() {
             <Route path="/create-cohort" component={CreateCohort} />
             <Route path="/applicant-dashboard" component={ApplicantDashboard}/>
             <Route path="/apply/:id" component={ApplicantForm} />
+            <Route path="/success" component={SuccessPage} />
             <Route component={NoMatches} />
           </Switch>
         </PageLayoutWithRouter>

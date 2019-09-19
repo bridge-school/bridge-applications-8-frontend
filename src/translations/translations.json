@@ -37,6 +37,9 @@
       },
       "common": {
         "404-page": "Sorry, this page does not exist"
+      },
+      "applicant": {
+        "success": "Apply for Bridge"
       }
     }
   }

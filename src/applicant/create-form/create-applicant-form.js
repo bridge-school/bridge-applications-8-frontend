@@ -1,6 +1,8 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
-import { Translation } from "react-i18next";
+import { useTranslation } from "react-i18next";
+import { Link, Route, Switch, BrowserRouter as Router } from "react-router-dom";
+import SuccessPage from '../success-page/success-page';
 import { Container, Label, InputField } from "../../common/forms/form-styles";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -9,6 +11,7 @@ import CustomSelect from "../../common/forms/custom-select";
 import CustomCheckbox from "../../common/forms/custom-checkbox";
 import RenderDyanmicFields from "../../common/forms/dynamic-fields";
 import Button from "../../common/button/button";
+import LinkButton from "../../common/button/link";
 import tachyons from "styled-components-tachyons";
 import styled from "styled-components";
 
@@ -27,6 +30,7 @@ const fieldComponents = {
 };
 
 const CreateApplicantForm = ({cohort}) => {
+  const { t } = useTranslation();
   return (
     <>
       <H2>{cohort.type} {cohort.name}</H2>
@@ -50,29 +54,51 @@ const CreateApplicantForm = ({cohort}) => {
               />
               {formProps.values.questions.map( q => {
 
-                return (
-                  <Field
-                    name={q.label}
-                    label={q.label}
-                    component={fieldComponents[q.type]}
-                  />
-                )
-
+                if (q.type === "dropdown") {
+                  return (
+                    <Field
+                      name={q.label}
+                      label={q.label}
+                      component={fieldComponents[q.type]}
+                      optionsLabel="-select-"
+                      options={q.options}
+                    />
+                  )
+                } else {
+                  return (
+                    <Field
+                      name={q.label}
+                      label={q.label}
+                      component={fieldComponents[q.type]}
+                    />
+                  )
+                }
               })}
+              <Router>
+                <Switch>
+                  <Route
+                    exact path="/success"
+                    component={SuccessPage}
+                    meow="meow"
+                  />
+                </Switch>
+              </Router>
+              <Link to={{
+                pathname: '/success',
+                state: {
+                  cohort: cohort
+                }
+              }}>
+                <Button
+                  size="feature"
+                >
+                  {t("applicant.success")}
+                </Button>
+              </Link>
             </Form>
           )
         }}
       />
-      {cohort.questions.map(question => {
-        return (
-          <div>
-            <label>{question.label}</label>
-            <p>{question.type}</p>
-            <input type={question.type} />
-            <p>{question.required}</p>
-          </div>
-        )
-      })}
     </>
   )
 }
