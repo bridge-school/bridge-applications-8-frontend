@@ -43,7 +43,7 @@
         "404-page": "Sorry, this page does not exist"
       },
       "applicant": {
-        "success": "Apply for Bridge"
+        "success": "Apply for Bridge",
         "apply-for-bridge": "Apply For Bridge",
         "apply-page-meta-description": "Cohort Application Forms for applicant-dashboard"
       }
