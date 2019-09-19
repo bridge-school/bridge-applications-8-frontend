@@ -4,10 +4,11 @@ import { useTranslation } from "react-i18next";
 import CustomInput from "../../common/forms/custom-input";
 import CustomSelect from "../../common/forms/custom-select";
 import CustomCheckbox from "../../common/forms/custom-checkbox";
+import QuestionTypeExample from "./custom-question-example";
 import Button from "../../common/button/button";
-import { Row } from "./form-styles";
+import { Row, Container } from "./form-styles";
 
-const RenderDyanmicFields = ({ formProps, errors }) => {
+const RenderDyanmicFields = ({ formProps, errors, children }) => {
   const { t } = useTranslation();
   return (
     <FieldArray
@@ -16,35 +17,63 @@ const RenderDyanmicFields = ({ formProps, errors }) => {
         <>
           {formProps.values.questions.length > 0
             ? formProps.values.questions.map((fieldItem, index) => (
-                <Row flex key={index}>
-                  <Field
-                    name={`questions.${index}.label${index}`}
-                    label={`${t(
-                      "admin.create-cohort.form.question"
-                    )} #${index}`}
-                    error={errors[`questions.${index}.label${index}`]}
-                    component={CustomInput}
-                  />
-                  <Field
-                    name={`questions.${index}.type${index}`}
-                    label={`${t(
-                      "admin.create-cohort.form.question"
-                    )} #${index} ${t("admin.create-cohort.form.type")}`}
-                    options={[
-                      t("admin.create-cohort.form.short-answer"),
-                      t("admin.create-cohort.form.paragraph"),
-                      t("admin.create-cohort.form.dropdown"),
-                      t("admin.create-cohort.form.checkboxes")
-                    ]}
-                    error={errors[`questions.${index}.type${index}`]}
-                    component={CustomSelect}
-                  />
-                  <Field
-                    name={`questions.${index}.required${index}`}
-                    label={t("admin.create-cohort.form.isRequired")}
-                    component={CustomCheckbox}
-                  />
-                </Row>
+                <Container
+                  className={`field-group`}
+                  data-group-number={`${index}`}
+                  key={index}
+                >
+                  <Row flex key={index}>
+                    <Field
+                      name={`questions.${index}.label`}
+                      label={`${t(
+                        "admin.create-cohort.form.question"
+                      )} #${index}`}
+                      error={errors[`questions.${index}.label`]}
+                      component={CustomInput}
+                    />
+                    <Field
+                      name={`questions.${index}.type`}
+                      label={`${t(
+                        "admin.create-cohort.form.question"
+                      )} #${index} ${t("admin.create-cohort.form.type")}`}
+                      options={[
+                        t("admin.create-cohort.form.short-answer"),
+                        t("admin.create-cohort.form.paragraph"),
+                        t("admin.create-cohort.form.dropdown"),
+                        t("admin.create-cohort.form.checkboxes")
+                      ]}
+                      error={errors[`questions.${index}.type`]}
+                      component={CustomSelect}
+                    />
+                    <Field
+                      name={`questions.${index}.required`}
+                      label={t("admin.create-cohort.form.isRequired")}
+                      component={CustomCheckbox}
+                    />
+                  </Row>
+                  <div id={`options${index}`}>
+                    {formProps.values.questions[index]["type"] ? (
+                      formProps.values.questions[index]["type"] ===
+                        "short-answer" ||
+                      formProps.values.questions[index]["type"] ===
+                        "paragraph" ? (
+                        <QuestionTypeExample
+                          questionType={
+                            formProps.values.questions[index]["type"]
+                          }
+                        />
+                      ) : (
+                        <Field
+                          name={`questions.${index}.options`}
+                          label={`${t(
+                            "admin.create-cohort.form.anwser-options"
+                          )}`}
+                          component={CustomInput}
+                        />
+                      )
+                    ) : null}
+                  </div>
+                </Container>
               ))
             : null}
           <Button
@@ -54,9 +83,10 @@ const RenderDyanmicFields = ({ formProps, errors }) => {
             disabled={formProps.values.isSubmitting}
             eventHandler={() =>
               arrayHelpers.push({
-                [`label${formProps.values.questions.length}`]: "",
-                [`type${formProps.values.questions.length}`]: "",
-                [`required${formProps.values.questions.length}`]: ""
+                [`label`]: "",
+                [`type`]: "",
+                [`required`]: "",
+                [`options`]: []
               })
             }
           >

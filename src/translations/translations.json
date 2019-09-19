@@ -24,6 +24,7 @@
             "question": "Question ",
             "type": "Type ",
             "short-answer": "Short Answer",
+            "anwser-options": "Anwser Options",
             "paragraph": "Paragraph",
             "checkboxes": "Checkboxes",
             "dropdown": "Dropdown",

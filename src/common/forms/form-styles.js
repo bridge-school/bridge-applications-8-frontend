@@ -10,13 +10,17 @@ export const Row = styled.div`
   ${tachyons}
 
   > div {
+    margin: 0 2rem;
+
     &:first-of-type {
       flex: 1;
+      margin-left: 0;
       margin-right: 2rem;
     }
 
     &:last-of-type {
       margin-left: 2rem;
+      margin-right: 0;
     }
   }
 `;
