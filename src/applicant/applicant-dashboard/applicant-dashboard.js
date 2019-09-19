@@ -32,7 +32,6 @@ const ApplicantDashboard = props => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-
   const { t } = useTranslation();
   const H1 = styled.h1`
     padding: 0;
@@ -58,8 +57,11 @@ const ApplicantDashboard = props => {
   return (
     <Wrapper flex flex_column>
       <Helmet>
-        <title>Cohort Application Forms</title>
-        <meta name="description" content="Cohort Application Forms for applicant-dashboard" />
+        <title>{t("admin.dashboard.cohort-application-form")}</title>
+        <meta
+          name="description"
+          content={t("applicant.apply-page-meta-description")}
+        />
       </Helmet>
       <HeadWrapper flex justify_between>
         <H1 di>{t("admin.dashboard.cohort-application-form")}</H1>
@@ -67,8 +69,8 @@ const ApplicantDashboard = props => {
       <CohortCardWrapper>
         <Router>
           <Switch>
-            <Route exact path="/" component={ApplicantDashboard}/>
-            <Route path="/apply/:id" component={ApplicantForm}/>
+            <Route exact path="/" component={ApplicantDashboard} />
+            <Route path="/apply/:id" component={ApplicantForm} />
           </Switch>
         </Router>
         {renderCohortsList(props)}

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import getApplyCohort from "../../store/actions/getApplyCohort";
+import { Helmet } from "react-helmet";
 // import { Formik, Form, Field } from "formik";
 // import { Container, Label, InputField } from "../../common/forms/form-styles";
 // import DatePicker from "react-datepicker";
@@ -14,7 +15,7 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 
 const renderApplicationForm = ({ cohort, loading }) => {
-  console.log("render form: ", cohort)
+  console.log("render form: ", cohort);
   if (loading) return "Loading...";
 
   return (
@@ -22,18 +23,17 @@ const renderApplicationForm = ({ cohort, loading }) => {
       <h2>{cohort.name}</h2>
       {cohort.questions.map(question => {
         return (
-        <div>
-          <label>{question.label}</label>
-          <p>{question.type}</p>
-          <input type={question.type}/>
-          <p>{question.required}</p>
-        </div>
-        )
+          <div>
+            <label>{question.label}</label>
+            <p>{question.type}</p>
+            <input type={question.type} />
+            <p>{question.required}</p>
+          </div>
+        );
       })}
     </>
-  )
+  );
 };
-
 
 const ApplicantForm = props => {
   const H1 = styled.h1`
@@ -55,14 +55,18 @@ const ApplicantForm = props => {
 
   return (
     <>
-      <H1>
-        {t("admin.create-cohort.form.title-application-questions")}
-      </H1>
+      <Helmet>
+        <title>{t("applicant.apply-for-bridge")}</title>
+        <meta
+          name="description"
+          content={t("applicant.apply-page-meta-description")}
+        />
+      </Helmet>
+      <H1>{t("admin.create-cohort.form.title-application-questions")}</H1>
       {renderApplicationForm(props)}
     </>
   );
 };
-
 
 const mapStateToProps = state => {
   return {

@@ -4,10 +4,12 @@
       "admin": {
         "dashboard": {
           "cohort-application-form": "Cohort Application Forms",
-          "create-application-group": "Create Application Group"
+          "create-application-group": "Create Application Group",
+          "cohort-application-form-admin": "Cohort Application Forms for admin-dashboard"
         },
         "create-cohort": {
           "create-new-cohort-application-form": "Create New Cohort Application Form",
+          "create-new-cohort-application-form-admin": "Create New Cohort Application Form for admin",
           "form": {
             "cohort-name-label": "Cohort Name",
             "cohort-name-error": "You must input a Cohort Name",
@@ -38,6 +40,10 @@
       },
       "common": {
         "404-page": "Sorry, this page does not exist"
+      },
+      "applicant": {
+        "apply-for-bridge": "Apply For Bridge",
+        "apply-page-meta-description": "Cohort Application Forms for applicant-dashboard"
       }
     }
   }
